@@ -1,0 +1,232 @@
+html {
+    zoom:1.2;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #2c2f33;
+
+}
+
+
+
+* {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    /* DebugMode:delete next line to show dashed border */
+    /*
+    border: 1px dashed gray;/**/
+
+}
+
+.container {
+  position: relative;
+  top: -3px;
+  background-color: #3a3e42;
+  height: 110%;
+  animation: transitionIn 1s;
+}
+
+*:not(input,checkbox,textarea) {
+    /*禁止文本选择*/
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none; /* Non-prefixed version, currently */
+   outline: none;
+   -webkit-tap-highlight-color: transparent;
+}
+
+input {
+    background-color: rgba(0,0,0,0);
+    height: 30px;
+    border-radius: 20px;
+}
+
+button {
+    height: 30px;
+    background-color: #E8E8E850;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+button:hover {
+  background-color: #8a8888;
+  border-radius: 15px;
+  transition: 0.9s;
+}
+
+button:active {
+     transform: translateY(2px);
+}
+
+input[type=radio]  {
+    width:20px;
+    height:20px;
+    margin-right:6px;
+    border:none;
+    outline-style:none;
+    -webkit-appearance:none;
+    vertical-align:middle;
+    border:1px solid #DDDDDDF0;
+    border-radius:50%;
+}
+input[type=radio]:checked {
+    border:6px solid #ffffff;
+    background:#FFFFFF;
+}
+
+input[type=checkbox]{
+ visibility: hidden;
+ vertical-align:middle; margin-bottom:2px;
+ cursor: pointer;
+ position: relative;
+ width: 24px;
+ height: 24px;
+}
+input[type=checkbox]::after{
+transition: 1s;
+ position: absolute;
+ top: 0;
+ margin-top:2px;
+ width: 14px; height: 14px;
+ border: 1px solid #EEEEEE;
+ border-radius: 5px;
+ background-color: rgba(0,0,0,0);
+ display: inline-block;
+ visibility: visible;
+ text-align: center;
+ content: ' ';
+}
+input[type=checkbox]:checked::after{
+ content: "✓";
+ border-color: #FFFFFF;
+ background-color: #686868;
+ font-size: 12px;
+ font-weight: bold;
+ border-radius: 5px;
+  transition: 1.5s;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sliderValue {
+  position: relative;
+  width: 100%;
+  background-color: #8a8a8a
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 15px;
+  width: 1px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+   height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  background-color: #656565;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -2.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+
+
+/* 滚动条整体部分 */
+.scrollbar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.scrollbar::-webkit-scrollbar {
+    width: 5px; /* 纵向滚动条宽度 */
+    height: 5px;/* 横向滚动条高度 */
+    background-color: #F5F5F5; /* 滚动条整体背景，一般被覆盖着 */
+}
+/* 滚动条的轨道（里面装有Thumb） */
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); /* 滚动条轨道阴影 */
+    /*border-radius: 10px; /* 滚动条轨道圆角 */
+    background-color: #F5F5F5; /* 滚动条轨道背景 */
+}
+/* 滚动条里面的滑块 */
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 15px; /* 滚动条滑块圆角 */
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); /* 滚动条滑块阴影 */
+    background-color: #B8B8B8; /* 滚动条滑块颜色 */
+}
+
+.menubox {
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        text-align:center;
+        transition: 0.4s;
+}
+.menubox.current {
+    background-color: #aaaaaa;
+    border-radius: 10px;
+    width: 70px;
+    transition: 1s;
+}
+
+
+.menuview {
+    display:none;
+
+}
+
+.menuview.current {
+    display:block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    animation: changePage 2s;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+@keyframes changePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
